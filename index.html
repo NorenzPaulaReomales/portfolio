@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>purple pop · lively portfolio</title>
-  <!-- Fonts + emoji-friendly -->
+  <title>NPR PORTFOLIO</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
   <style>
     /* ===== RESET & GLOBAL ===== */
     * {
@@ -70,53 +69,29 @@
       color: inherit;
     }
 
-    /* ===== CURSIVE H1 ANIMATION ===== */
+    /* ===== CURSIVE H1 (STATIC & READABLE) ===== */
     .hero-title-wrapper {
-      display: inline-block;
-      animation: textFloat 5s ease-in-out infinite;
       margin-bottom: 1.5rem;
-      line-height: 1.3;
-    }
-
-    @keyframes textFloat {
-      0%, 100% { transform: translateY(0) rotate(-1deg); }
-      50% { transform: translateY(-10px) rotate(1deg); }
+      position: relative;
+      padding-top: 60px; 
     }
 
     .cursive-hero {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(3.5rem, 9vw, 7rem); 
-      font-weight: 400;
-      display: block;
-    }
-
-    .cursive-hero .letter {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(4rem, 9vw, 6.5rem); 
+      font-weight: 700;
       display: inline-block;
-      opacity: 0;
-      padding: 0.15em 0.05em; 
-      margin: -0.15em 0;
-      animation: letterReveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      letter-spacing: 0.02em;
+      padding-bottom: 10px;
       
+      /* Gradient text */
       background: linear-gradient(45deg, #6b21a8 0%, #a855f7 25%, #d8b4fe 50%, #a855f7 75%, #6b21a8 100%);
       background-size: 200% auto;
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
       
-      animation: letterReveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards, 
-                 cursiveShimmer 4s linear infinite alternate;
-      transform-origin: bottom center;
-    }
-
-    @keyframes letterReveal {
-      0% {
-        opacity: 0;
-        transform: translateY(30px) rotate(-10deg);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0) rotate(0deg);
-      }
+      animation: cursiveShimmer 4s linear infinite alternate;
     }
 
     @keyframes cursiveShimmer {
@@ -131,6 +106,21 @@
       margin-left: 10px;
       font-size: 0.8em;
       filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4));
+    }
+
+    /* ==== ANIMATED GIF SA TAAS (FLOATING & PINALAKI) ==== */
+    .hero-emoji-badge {
+      position: absolute;
+      top: -30px; 
+      left: 20px; 
+      z-index: 20;
+    }
+
+    .hero-cat {
+      width: 160px; 
+      height: auto;
+      animation: bounce 2s infinite ease-in-out;
+      filter: drop-shadow(0 8px 12px rgba(139, 92, 246, 0.4));
     }
 
     /* ===== EMOJI ANIMATION KEYFRAMES ===== */
@@ -198,17 +188,21 @@
       color: transparent;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
 
-    .logo span {
-      font-size: 1.6rem;
-      display: inline-block;
-      animation: wave 2.5s infinite;
-      transform-origin: bottom right;
-      -webkit-text-fill-color: initial;
+    /* ==== BAGONG CLASS PARA SA MALIIT NA GIF LOGO ==== */
+    .logo-gif {
+      width: 30px; /* Sapat na laki para magmukhang icon */
+      height: 30px;
+      object-fit: contain;
+      border-radius: 50%; /* Para maging bilog */
+      vertical-align: middle;
+      -webkit-text-fill-color: initial; /* Para hindi maging transparent */
     }
 
+    /* Ang lumang .logo span ay tinanggal dahil pinalitan na ng .logo-gif */
+    
     nav {
       display: flex;
       gap: 2.2rem;
@@ -253,27 +247,6 @@
 
     .hero-content {
       max-width: 900px;
-    }
-
-    .hero-emoji-badge {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
-    }
-
-    .hero-emoji-badge span {
-      display: inline-block;
-      animation: bounce 2s infinite;
-    }
-
-    .hero-emoji-badge span:nth-child(2) {
-      animation-delay: 0.3s;
-    }
-
-    .hero-emoji-badge span:nth-child(3) {
-      animation-delay: 0.6s;
     }
 
     .hero-desc {
@@ -442,20 +415,48 @@
       background: rgba(255, 255, 255, 0.9);
     }
 
-    .card-emoji {
-      font-size: 3rem;
-      display: inline-block;
+    /* ==== CONTAINER PARA SA MGA GIF SA CARDS ==== */
+    .card-gif-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px; 
       margin-bottom: 1.2rem;
+    }
+
+    .card-gif {
+      display: block;
+      flex-shrink: 0; 
       animation: floatEmoji 4s infinite;
       filter: drop-shadow(0 8px 12px rgba(168, 85, 247, 0.2));
     }
 
-    .project-card:nth-child(2) .card-emoji {
+    /* ==== PAGLALAKI NG GIF (DIRECT WIDTH & HEIGHT) ==== */
+    .gif-weather {
+      width: 85px; 
+      height: 85px;
+      object-fit: contain;
+    }
+
+    .gif-quest {
+      width: 210px; 
+      height: 110px;
+      object-fit: contain;
+    }
+
+    .gif-spellbook {
+      width: 210px; 
+      height: 95px;
+      object-fit: contain;
+    }
+
+    /* Animations delays */
+    .project-card:nth-child(2) .card-gif {
       animation-delay: 0.5s;
       animation-duration: 4.5s;
     }
 
-    .project-card:nth-child(3) .card-emoji {
+    .project-card:nth-child(3) .card-gif {
       animation-delay: 1s;
       animation-duration: 3.8s;
     }
@@ -533,39 +534,50 @@
       font-size: 1.1rem;
     }
 
+    /* ===== MGA GIF SA ILALIM ===== */
     .emoji-rain {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem;
-      font-size: 2rem;
+      gap: 1rem;
       margin-top: 1.5rem;
     }
 
-    .emoji-rain span {
+    .emoji-rain img {
+      width: 45px; 
+      height: 45px;
+      object-fit: contain; 
       display: inline-block;
       animation: floatEmoji 3s infinite;
+      filter: drop-shadow(0 4px 8px rgba(168, 85, 247, 0.2));
     }
 
-    .emoji-rain span:nth-child(2n) { animation-delay: 0.2s; }
-    .emoji-rain span:nth-child(3n) { animation-delay: 0.5s; }
-    .emoji-rain span:nth-child(4n) { animation-delay: 0.8s; }
+    .emoji-rain img:nth-child(2n) { animation-delay: 0.2s; }
+    .emoji-rain img:nth-child(3n) { animation-delay: 0.5s; }
+    .emoji-rain img:nth-child(4n) { animation-delay: 0.8s; }
 
+    /* ===== TRANSPARENT BACKGROUND PARA SA VIDEO ===== */
     .fun-about-visual {
-      background: linear-gradient(145deg, #e9d7ff, #dcc6ff);
-      border-radius: 40px;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      
       height: 300px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      overflow: hidden;
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
     }
 
-    .big-emoji {
-      font-size: 7rem;
-      animation: bounce 2s infinite;
-      filter: drop-shadow(0 12px 20px rgba(139, 92, 246, 0.3));
+    /* ===== MAS MALAKING BILOG NA VIDEO LOGO ===== */
+    .profile-video {
+      width: 280px; 
+      height: 280px; 
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid #ffffff;
+      box-shadow: 0 15px 35px rgba(139, 92, 246, 0.35), 
+                  0 0 0 10px rgba(168, 85, 247, 0.1);
+      animation: bounce 4s infinite ease-in-out;
       z-index: 2;
     }
 
@@ -576,9 +588,9 @@
       transform-origin: center;
     }
 
-    .orbit-emoji:nth-child(2) { top: 15%; left: 15%; animation-duration: 10s; }
-    .orbit-emoji:nth-child(3) { bottom: 15%; right: 15%; animation-duration: 14s; animation-direction: reverse; }
-    .orbit-emoji:nth-child(4) { top: 20%; right: 20%; animation-duration: 18s; }
+    .orbit-emoji:nth-child(2) { top: 10%; left: 10%; animation-duration: 10s; }
+    .orbit-emoji:nth-child(3) { bottom: 10%; right: 10%; animation-duration: 14s; animation-direction: reverse; }
+    .orbit-emoji:nth-child(4) { top: 15%; right: 15%; animation-duration: 18s; }
 
     /* ===== CONTACT + FOOTER ===== */
     .contact-section {
@@ -625,13 +637,23 @@
       transition: all 0.2s;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px; 
     }
 
     .social-links a:hover {
       color: #7c3aed;
       border-bottom-color: #a855f7;
       transform: translateY(-3px);
+    }
+
+    /* ==== BAGONG CLASS PARA SA MALIIT NA ICONS ==== */
+    .social-icon {
+      width: 20px;
+      height: 20px;
+      object-fit: cover;
+      border-radius: 50%; 
+      display: inline-block;
+      vertical-align: middle;
     }
 
     .footer-bottom {
@@ -657,14 +679,28 @@
       .container { padding: 0 1.5rem; }
       nav { gap: 1.2rem; font-size: 0.9rem; }
       .fun-about { grid-template-columns: 1fr; padding: 2rem; }
-      .hero-emoji-badge { font-size: 1.8rem; }
+      
+      /* Inayos ang posisyon ng cat sa mobile */
+      .hero-title-wrapper { padding-top: 50px; }
+      .hero-emoji-badge { top: -20px; left: 10px; }
+      .hero-cat { width: 100px; }
+      
       .btn { padding: 0.8rem 1.6rem; }
       .section-title { font-size: 2.2rem; }
       .hero-bg-emoji { display: none; }
       .social-links { gap: 1.5rem; }
       .fun-about-visual { height: 250px; }
-      .big-emoji { font-size: 5rem; }
+      .profile-video { width: 220px; height: 220px; }
       .cursive-hero { font-size: 3.8rem; }
+      
+      /* Inayos ang GIF size sa mobile */
+      .emoji-rain img { width: 35px; height: 35px; }
+      
+      /* I-scale pababa ang mga GIF sa cards para sa mobile */
+      .gif-weather { width: 65px; height: 65px; }
+      .gif-quest { width: 85px; height: 85px; }
+      .gif-spellbook { width: 75px; height: 75px; }
+      .card-gif-container { height: 70px; }
     }
   </style>
 </head>
@@ -674,12 +710,12 @@
   <header>
     <div class="container header-inner">
       <a href="#" class="logo">
-        <span>✨</span> purplepop
+         <img src="dancing-cats.gif" alt="logo" class="logo-gif"> NPR
       </a>
       <nav>
-        <a href="#work">work</a>
-        <a href="#about">about</a>
-        <a href="#contact">contact</a>
+        <a href="#work">Works</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contacts</a>
       </nav>
     </div>
   </header>
@@ -688,21 +724,20 @@
   <section class="hero">
     <div class="hero-bg-emoji">🌀</div>
     <div class="container hero-content">
-      <div class="hero-emoji-badge">
-        <span>🚀</span>
-        <span>💜</span>
-        <span>🌈</span>
-      </div>
-
-      <!-- CURSIVE H1 -->
+      
+      <!-- CURSIVE H1 (MAY FLOATING GIF SA TAAS) -->
       <div class="hero-title-wrapper">
-        <h1 class="cursive-hero" id="cursiveTitle">
-          <span class="letter" style="animation-delay: 0.1s;">v</span><span class="letter" style="animation-delay: 0.15s;">i</span><span class="letter" style="animation-delay: 0.2s;">v</span><span class="letter" style="animation-delay: 0.25s;">i</span><span class="letter" style="animation-delay: 0.3s;">d</span><span style="display:inline-block; width:0.15em;"></span><span class="letter" style="animation-delay: 0.35s;">p</span><span class="letter" style="animation-delay: 0.4s;">u</span><span class="letter" style="animation-delay: 0.45s;">r</span><span class="letter" style="animation-delay: 0.5s;">p</span><span class="letter" style="animation-delay: 0.55s;">l</span><span class="letter" style="animation-delay: 0.6s;">e</span><span style="display:inline-block; width:0.15em;"></span><span class="letter" style="animation-delay: 0.65s;">v</span><span class="letter" style="animation-delay: 0.7s;">i</span><span class="letter" style="animation-delay: 0.75s;">b</span><span class="letter" style="animation-delay: 0.8s;">e</span><span class="letter" style="animation-delay: 0.85s;">s</span><span class="hero-emoji" style="animation-delay: 0.9s;">✨</span>
+        <div class="hero-emoji-badge">
+          <img src="purple-moon.gif" alt="purple moon" class="hero-cat">
+        </div>
+        
+        <h1 class="cursive-hero">
+          PORTFOLIO <span class="hero-emoji">✨</span>
         </h1>
       </div>
 
       <p class="hero-desc">
-        a lively portfolio bursting with emoji energy, smooth animations, and a deep love for purple.
+        Welcome to my portfolio! Here, you'll find websites I've designed and developed with creativity, smooth interaction, and a touch of cuteness. 
       </p>
       <div class="hero-cta">
         <a href="#work" class="btn btn-primary">see projects <span>👉</span></a>
@@ -713,52 +748,57 @@
 
   <!-- PROJECTS -->
   <section id="work" class="section">
-    <!-- 👇 THE FIX WAS ADDING class="container" TO THIS DIV -->
     <div class="container">
       <div class="section-header reveal">
         <div>
           <div class="section-label">🔥 featured work</div>
           <h2 class="section-title">
-            playful projects <span class="title-emoji">🎨</span>
+            My Projects <span class="title-emoji">🎨</span>
           </h2>
         </div>
       </div>
       <div class="projects-grid">
         <!-- project 1 -->
         <div class="project-card reveal">
-          <div class="card-emoji">🎮</div>
-          <h3>emoji quest</h3>
-          <p>a gamified habit tracker where every task earns you a new emoji badge. built with vanilla js & lots of love.</p>
-          <div class="card-tags">
-            <span class="tag">react</span>
-            <span class="tag">animation</span>
-            <span class="tag">fun</span>
+          <div class="card-gif-container">
+            <img src="animated-cat.gif" alt="gif" class="card-gif gif-quest">
           </div>
-          <a href="#" class="card-link">play now <span>→</span></a>
+          <h3>JanCasRob Apartment</h3>
+          <p>A Web-based Smart Apartment Monitoring and Contract Management System</p>
+          <div class="card-tags">
+            <span class="tag">apartment</span>
+            <span class="tag">monitoring</span>
+            <span class="tag">contract</span>
+          </div>
+          <a href="https://jancasrob.infinityfreeapp.com/apartment.php?" class="card-link">Visit Here <span>→</span></a>
         </div>
         <!-- project 2 -->
         <div class="project-card reveal">
-          <div class="card-emoji">🌈</div>
-          <h3>purple weather</h3>
-          <p>a weather app that changes its entire palette based on the temperature — with animated emoji forecasts.</p>
-          <div class="card-tags">
-            <span class="tag">api</span>
-            <span class="tag">design</span>
-            <span class="tag">css</span>
+          <div class="card-gif-container">
+            <img src="ticklish-cat.gif" alt="gif" class="card-gif gif-weather">
           </div>
-          <a href="#" class="card-link">explore <span>→</span></a>
+          <h3>Anne-Made Crochic</h3>
+          <p>A promotional website created for small crochet business, designed to showcase handmade products and stregthen its online presence. </p>
+          <div class="card-tags">
+            <span class="tag">crochet</span>
+            <span class="tag">yarn</span>
+            <span class="tag">cute</span>
+          </div>
+          <a href="https://anne-made.infinityfreeapp.com" class="card-link">Visit Here <span>→</span></a>
         </div>
         <!-- project 3 -->
         <div class="project-card reveal">
-          <div class="card-emoji">🪄</div>
-          <h3>spellbook ui</h3>
-          <p>a design system with magical micro-interactions, floating emojis, and a dark purple theme.</p>
+          <div class="card-gif-container">
+            <img src="playing-cat.gif" alt="gif" class="card-gif gif-spellbook">
+          </div>
+          <h3>None</h3>
+          <p>N/A</p>
           <div class="card-tags">
             <span class="tag">ui kit</span>
             <span class="tag">figma</span>
             <span class="tag">motion</span>
           </div>
-          <a href="#" class="card-link">view case <span>→</span></a>
+          <a href="#" class="card-link">Visit Here <span>→</span></a>
         </div>
       </div>
     </div>
@@ -769,25 +809,31 @@
     <div class="container">
       <div class="fun-about reveal">
         <div class="fun-about-text">
-          <h2>about me <span style="animation: wave 2s infinite; display: inline-block;">👋</span></h2>
-          <p>hey! i'm a creative developer who believes interfaces should feel alive. i sprinkle emojis, smooth transitions, and a whole lot of purple wherever i go.</p>
-          <p>when i'm not coding, i'm probably collecting rare emojis or perfecting my gradient game.</p>
+          <h2>About Me <span style="animation: wave 2s infinite; display: inline-block;">👋</span></h2>
+          <p>Hey! I'm Norenz Paula S. Reomales, a passionate Frontend Developer who loves creating cute, interactive, and visually appealing websites. I'm a big fan of adorable emojis, smooth transitions, and collecting cute stickers that add personality and charm to my projects.</p>
+          <p>I enjoy designing websites that feel creativity, warm, and visaully pleasing. I always aim to create websites that are both beautiful and enjjoyable to use.</p>
+          
+          <!-- MGA GIF NA -->
           <div class="emoji-rain">
-            <span>💜</span>
-            <span>🚀</span>
-            <span>✨</span>
-            <span>🎨</span>
-            <span>🦄</span>
-            <span>🌙</span>
-            <span>💫</span>
-            <span>🔮</span>
+            <img src="purple-paw.gif" alt="gif">
+            <img src="purple-paw.gif" alt="gif">
+            <img src="purple-paw.gif" alt="gif">
+            <img src="purple-paw.gif" alt="gif">
+            <img src="purple-paw.gif" alt="gif">
+            <img src="purple-paw.gif" alt="gif">
+            <img src="purple-paw.gif" alt="gif">
+            <img src="purple-paw.gif" alt="gif">
           </div>
+          
         </div>
         <div class="fun-about-visual">
-          <span class="orbit-emoji" style="top: 20%; left: 15%;">⭐</span>
-          <span class="orbit-emoji" style="top: 70%; right: 10%;">🌟</span>
-          <span class="orbit-emoji" style="top: 40%; right: 25%;">💫</span>
-          <div class="big-emoji">🦄</div>
+          <span class="orbit-emoji" style="top: 10%; left: 10%;">⭐</span>
+          <span class="orbit-emoji" style="bottom: 10%; right: 10%;">🌟</span>
+          <span class="orbit-emoji" style="top: 15%; right: 15%;">💫</span>
+          
+          <!-- BILOG NA VIDEO LOGO -->
+          <video class="profile-video" src="portfolio_NPR.mp4" autoplay loop muted playsinline></video>
+          
         </div>
       </div>
     </div>
@@ -797,19 +843,17 @@
   <section id="contact" class="contact-section">
     <div class="container">
       <div class="reveal">
-        <h2>let's make magic <span>✨</span></h2>
-        <p>have a wild idea or just want to share your favorite emoji? my inbox is always open.</p>
-        <a href="mailto:hello@purplepop.dev" class="btn btn-primary" style="margin-bottom: 2.5rem;">hello@purplepop.dev 💌</a>
+        <h2>Let's build something cute together <span>✨</span></h2>
+        <p>If you have an idea you'd like to bring to life? Feel free to contact me. I'd be happy to connect with you.</p>
+        
       </div>
       <div class="social-links reveal">
-        <a href="#">📸 instagram</a>
-        <a href="#">🐦 twitter</a>
-        <a href="#">💻 github</a>
-        <a href="#">🎨 dribbble</a>
+        <a href="#">💌 reomalespaula@gmail.com</a>
+        <!-- Nilagyan ng class="social-icon" ang mga images -->
+        <a href="https://www.linkedin.com/in/reomales-norenz-paula-s-91b552434/"><img src="linkedin-purple.png" alt="LinkedIn" class="social-icon">LinkedIn</a>
+        <a href="#"><img src="facebook-purple.jpg" alt="Facebook" class="social-icon"> @norenz.reomales</a>
       </div>
-      <div class="footer-bottom reveal">
-        © 2025 purplepop · made with 💜 and way too many emojis
-      </div>
+      
     </div>
   </section>
 
@@ -867,20 +911,6 @@
           setTimeout(() => emoji.remove(), 800);
         });
       });
-
-      // Re-trigger cursive letter animation on hover
-      const cursiveTitle = document.getElementById('cursiveTitle');
-      if (cursiveTitle) {
-        const letters = cursiveTitle.querySelectorAll('.letter');
-        cursiveTitle.addEventListener('mouseenter', () => {
-          letters.forEach((letter, i) => {
-            letter.style.animation = 'none';
-            letter.offsetHeight; 
-            letter.style.animation = `letterReveal 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards, cursiveShimmer 4s linear infinite alternate`;
-            letter.style.animationDelay = `${i * 0.04}s, 0s`;
-          });
-        });
-      }
     })();
   </script>
 
@@ -888,7 +918,6 @@
   <noscript>
     <style>
       .reveal, .project-card { opacity: 1 !important; transform: translateY(0) !important; }
-      .cursive-hero .letter { opacity: 1 !important; transform: none !important; }
     </style>
   </noscript>
 </body>
